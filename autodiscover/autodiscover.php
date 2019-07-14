@@ -47,7 +47,8 @@ $imapSSL    = true;
 // SMTP settings
 $smtpServer = 'smtp.' . $domain; // smtp.example.com
 $smtpPort   = 587;
-$smtpSSL    = true;
+$smtpSSL    = false;
+$smtpTLS    = true;
 
 //set Content-Type
 header( 'Content-Type: application/xml' );
@@ -66,7 +67,7 @@ header( 'Content-Type: application/xml' );
 				<DomainRequired>off</DomainRequired>
 				<SPA>off</SPA>
 				<SSL><?php echo $popSSL ? 'on' : 'off'; ?></SSL>
-				<DomainRequired>off</DomainRequired>
+				<AuthRequired>on</AuthRequired>
 			</Protocol>
 			<Protocol>
 				<Type>IMAP</Type>
@@ -86,6 +87,10 @@ header( 'Content-Type: application/xml' );
 				<LoginName><?php echo $email[1]; ?></LoginName>
 				<SPA>off</SPA>
 				<SSL><?php echo $smtpSSL ? 'on' : 'off'; ?></SSL>
+				<?php if ($smtpTLS == true ){
+                                          echo '<Encryption>TLS</Encryption>';
+                                          }
+                                ?>			
 				<AuthRequired>on</AuthRequired>
 				<UsePOPAuth>on</UsePOPAuth>
 				<SMTPLast>on</SMTPLast>
