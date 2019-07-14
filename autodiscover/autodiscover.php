@@ -93,7 +93,7 @@ header( 'Content-Type: application/xml' );
                                 ?>			
 				<AuthRequired>on</AuthRequired>
 				<UsePOPAuth>on</UsePOPAuth>
-				<SMTPLast>on</SMTPLast>
+				<SMTPLast>off</SMTPLast>
 			</Protocol>
 		</Account>
 	</Response>
